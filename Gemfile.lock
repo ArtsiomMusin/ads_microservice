@@ -14,6 +14,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     byebug (11.1.3)
     concurrent-ruby (1.1.6)
+    dry-initializer (3.0.3)
     emk-sinatra-url-for (0.2.1)
       sinatra (>= 0.9.1.1)
     fast_jsonapi (1.5)
@@ -37,6 +38,8 @@ GEM
     sinatra-activerecord (2.0.18)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
+    sinatra-strong-params (0.1.0)
+      sinatra (>= 1.4.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
     tzinfo (1.2.7)
@@ -49,12 +52,14 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  dry-initializer (~> 3.0.3)
   emk-sinatra-url-for
   fast_jsonapi (~> 1.5)
   pg
   rake
   sinatra
   sinatra-activerecord
+  sinatra-strong-params
   will_paginate (~> 3.1.0)
 
 BUNDLED WITH
