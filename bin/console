@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative '../config/environment'
+puts 'Loading sintara console...'
+
+require 'irb'
+IRB.start(__FILE__)

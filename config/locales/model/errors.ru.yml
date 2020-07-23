@@ -1,0 +1,26 @@
+ru:
+  errors:
+    format: "%{message}"
+  activerecord:
+    errors:
+      models:
+        ad:
+          attributes:
+            title:
+              blank: 'Укажите название'
+            description:
+              blank: 'Укажите описание'
+            city:
+              blank: 'Укажите город'
+            user_id:
+              blank: 'Укажите id пользователя'
+  activemodel:
+    errors:
+      models:
+        model:
+          attributes:
+            blue:
+              blank: 'не может быть пустым'
+            green:
+              blank: 'не может быть пустым'
+              inclusion: 'имеет непредусмотренное значение'

@@ -1,8 +1,10 @@
 # Rakefile
 require "sinatra/activerecord/rake"
 
+ENV['RACK_ENV'] ||= 'development'
+
 namespace :db do
   task :load_config do
-    require "./ads"
+    require "./config/environment"
   end
 end

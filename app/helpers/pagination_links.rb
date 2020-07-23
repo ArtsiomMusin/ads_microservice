@@ -1,5 +1,3 @@
-require 'sinatra/url_for'
-
 module PaginationLinks
   def pagination_links(scope)
     return {} if scope.total_pages.zero?
@@ -10,7 +8,7 @@ module PaginationLinks
     }
 
     links[:next] = pagination_link(page: scope.next_page) if scope.next_page.present?
-    links[:prev] = pagination_link(page: scope.previous_page) if scope.previous_page.present?
+    links[:prev] = pagination_link(page: scope.prev_page) if scope.prev_page.present?
 
     links
   end
