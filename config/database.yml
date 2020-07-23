@@ -8,4 +8,10 @@ development:
   <<: *default
   username: postgres
   host: localhost
-  database: microservices_development
+  database: microservices
+
+test:
+  <<: *default
+  username: postgres
+  host: localhost
+  database: microservices_test

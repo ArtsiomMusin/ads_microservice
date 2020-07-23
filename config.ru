@@ -1,7 +1,4 @@
-require 'rubygems'
-require 'bundler'
+require_relative 'config/environment'
 
-Bundler.require
+run AdsRoutes
 
-require './ads'
-run Sinatra::Application
