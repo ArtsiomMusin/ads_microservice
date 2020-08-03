@@ -34,6 +34,10 @@ GEM
     erubi (1.9.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
+    faraday (1.0.1)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (1.0.0)
+      faraday (~> 1.0)
     fast_jsonapi (1.5)
       activesupport (>= 4.2)
     i18n (1.8.3)
@@ -56,6 +60,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.1)
     multi_json (1.15.0)
+    multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.2)
@@ -122,6 +127,8 @@ DEPENDENCIES
   dry-initializer (~> 3.0.3)
   emk-sinatra-url-for
   factory_bot
+  faraday
+  faraday_middleware
   fast_jsonapi (~> 1.5)
   i18n
   kaminari (~> 1.2.1)

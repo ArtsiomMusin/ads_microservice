@@ -16,6 +16,9 @@ gem 'emk-sinatra-url-for'
 gem 'sinatra-strong-params', require: 'sinatra/strong-params'
 gem 'dry-initializer', '~> 3.0.3'
 
+gem 'faraday'
+gem 'faraday_middleware'
+
 group :development do
   gem 'byebug'
 end
