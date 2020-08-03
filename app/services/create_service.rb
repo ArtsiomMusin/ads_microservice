@@ -10,7 +10,7 @@ class CreateService
     option :user_id
   end
 
-  #option :user
+  option :geo_client, default: proc { GeoService::Client.new }
 
   attr_reader :ad
 
@@ -23,8 +23,7 @@ class CreateService
   private
 
   def find_city_coord
-    geo_client = GeoService::Client.new
-    coordinates = geo_client.coord(@ad.city)
+    coordinates = @geo_client.coord(@ad.city)
     @ad.lat, @ad.lon = coordinates if coordinates
   end
 end
