@@ -74,59 +74,59 @@ RSpec.describe AdsRoutes, type: :route do
       end
     end
 
-    context 'existing city' do
-      let(:lat) { 45.05 }
-      let(:lon) { 90.05 }
+    # context 'existing city' do
+    #   let(:lat) { 45.05 }
+    #   let(:lon) { 90.05 }
 
-      let(:ad_params) do
-        {
-          title: 'Ad title',
-          description: 'Ad description',
-          city: 'City 17',
-          user_id: 1
-        }
-      end
+    #   let(:ad_params) do
+    #     {
+    #       title: 'Ad title',
+    #       description: 'Ad description',
+    #       city: 'City 17',
+    #       user_id: 1
+    #     }
+    #   end
   
-      before do
-        allow_any_instance_of(GeoService::Api).to receive(:coord)
-          .with('City 17')
-          .and_return([lat, lon])
-      end
+    #   before do
+    #     allow_any_instance_of(GeoService::Api).to receive(:coord)
+    #       .with('City 17')
+    #       .and_return([lat, lon])
+    #   end
   
-      it 'updates ad coordinates' do
-        post '/ads', ad: ad_params
+    #   it 'updates ad coordinates' do
+    #     post '/ads', ad: ad_params
   
-        ad = Ad.last
-        expect(ad.lat).to eq(lat)
-        expect(ad.lon).to eq(lon)
-      end
-    end
+    #     ad = Ad.last
+    #     expect(ad.lat).to eq(lat)
+    #     expect(ad.lon).to eq(lon)
+    #   end
+    # end
   
-    context 'missing city' do
-      before do
-        allow_any_instance_of(GeoService::Api).to receive(:coord)
-          .with('City 17')
-          .and_return(nil)
-      end
+  #   context 'missing city' do
+  #     before do
+  #       allow_any_instance_of(GeoService::Api).to receive(:coord)
+  #         .with('City 17')
+  #         .and_return(nil)
+  #     end
 
-      let(:ad_params) do
-        {
-          title: 'Ad title',
-          description: 'Ad description',
-          city: 'City 17',
-          user_id: 1
-        }
-      end
+  #     let(:ad_params) do
+  #       {
+  #         title: 'Ad title',
+  #         description: 'Ad description',
+  #         city: 'City 17',
+  #         user_id: 1
+  #       }
+  #     end
   
-      it 'does not update ad coordinates' do
-        post '/ads', ad: ad_params
+  #     it 'does not update ad coordinates' do
+  #       post '/ads', ad: ad_params
   
-        ad = Ad.last  
-        expect(ad.lat).to be_nil
-        expect(ad.lon).to be_nil
-      end
-    end
-  end
+  #       ad = Ad.last  
+  #       expect(ad.lat).to be_nil
+  #       expect(ad.lon).to be_nil
+  #     end
+  #   end
+  # end
 
   # describe 'POST /ads (invalid auth token)' do
   #   let(:ad_params) do
