@@ -24,4 +24,22 @@ class AdsRoutes < Application
       error_response(result.ad)
     end
   end
+
+  put '/ads/:id' do
+    data = JSON(request.body.read)
+    result = UpdateService.call(
+      params[:id], 
+      lat: data['lat'], 
+      lon: data['lon']
+    )
+    
+    if result.success?
+      serializer = AdSerializer.new(result.ad)
+      status 201
+      json serializer
+    else
+      status 422
+      error_response(result.ad)
+    end
+  end
 end

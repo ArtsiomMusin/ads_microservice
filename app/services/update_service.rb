@@ -6,11 +6,11 @@ class UpdateService
   param :id
   param :data
 
-  option :ad, proc: { Ad.first(id: @id)}
+  option :ad, default: proc { Ad.find_by(id: @id) }
 
   def call
     return fail(I18n.t(:not_found, scope: 'api.errors')) if @ad.blank?
 
-    @ad.update_fields(data, %i[lat lon])
+    @ad.update(lat: @data[:lat], lon: @data[:lon])
   end
 end

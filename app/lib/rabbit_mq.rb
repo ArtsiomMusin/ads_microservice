@@ -12,4 +12,8 @@ module RabbitMq
   def channel
     Thread.current[:rabbitmq_channel] ||= connection.create_channel
   end
+
+  def consumer_channel
+    Thread.current[:rabbitmq_consumer_channel] ||= connection.create_channel( nil, 10 )
+  end
 end
