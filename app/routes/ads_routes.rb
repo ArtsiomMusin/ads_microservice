@@ -1,5 +1,5 @@
 class AdsRoutes < Application
-  include PaginationLinks
+  include PaginationLinks, Auth
 
   get '/ads' do
     ads = Ad.order(updated_at: :desc).page(params[:page])
@@ -12,7 +12,7 @@ class AdsRoutes < Application
   post '/ads' do
     result = CreateService.call(
       ad: params.dig('ad'),
-      user_id: params.dig('ad', 'user_id') # TODO: should be taken from Auth service later?
+      user_id: user_id
     )
   
     if result.success?

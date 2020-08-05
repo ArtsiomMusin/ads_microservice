@@ -6,6 +6,8 @@ module ApiErrors
 
   private
 
+  class NotAuthorized < StandardError; end
+
   helpers do
     def error_response(error_messages)
       errors = case error_messages
@@ -32,5 +34,10 @@ module ApiErrors
   error KeyError, ArgumentError do
     status 422
     error_response(I18n.t(:missing_parameters, scope: 'api.errors'))
+  end
+
+  error ApiErrors::NotAuthorized do
+    status 404
+    error_response(I18n.t(:not_authorized, scope: 'api.errors'))
   end
 end
