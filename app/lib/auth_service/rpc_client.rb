@@ -46,9 +46,12 @@ module AuthService
         res = @queue.publish(
           payload,
           opts.merge(
-            app_id: 'auth',
+            app_id: Settings.app.name,
             correlation_id: @correlation_id,
-            reply_to: @repry_queue.name
+            reply_to: @repry_queue.name,
+            headers: {
+              request_id: Thread.current[:request_id]
+            }
           )
         )
         @condition.wait(@lock)
@@ -58,26 +61,3 @@ module AuthService
     end
   end
 end
-
-# module AuthService
-#   class Client
-#     extend Dry::Initializer[undefined: false]
-#     include Api
-
-#     option :queue, default: proc { create_queue }
-
-#     private 
-
-#     def create_queue
-#       channel = RabbitMq.channel
-#       channel.queue('auth', durable: true)
-#     end
-
-#     def publish(payload, opts = {})
-#       @queue.publish(
-#         payload,
-#         opts.merge(persistent: true, app_id: 'ads')
-#       )
-#     end
-#   end
-# end

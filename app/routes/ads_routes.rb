@@ -27,10 +27,19 @@ class AdsRoutes < Application
 
   put '/ads/:id' do
     data = JSON(request.body.read)
+    Application.logger.info(
+      'update body',
+      body: data.to_json
+    )
     result = UpdateService.call(
       params[:id], 
       lat: data['lat'], 
       lon: data['lon']
+    )
+
+    Application.logger.info(
+      'update result',
+      result: result
     )
     
     if result.success?
