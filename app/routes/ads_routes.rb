@@ -1,5 +1,5 @@
 class AdsRoutes < Application
-  include PaginationLinks
+  include PaginationLinks, Auth
 
   get '/ads' do
     ads = Ad.order(updated_at: :desc).page(params[:page])
@@ -12,9 +12,27 @@ class AdsRoutes < Application
   post '/ads' do
     result = CreateService.call(
       ad: params.dig('ad'),
-      user_id: params.dig('ad', 'user_id') # TODO: should be taken from Auth service later?
+      user_id: user_id
     )
   
+    if result.success?
+      serializer = AdSerializer.new(result.ad)
+      status 201
+      json serializer
+    else
+      status 422
+      error_response(result.ad)
+    end
+  end
+
+  put '/ads/:id' do
+    data = JSON(request.body.read)
+    result = UpdateService.call(
+      params[:id], 
+      lat: data['lat'], 
+      lon: data['lon']
+    )
+    
     if result.success?
       serializer = AdSerializer.new(result.ad)
       status 201

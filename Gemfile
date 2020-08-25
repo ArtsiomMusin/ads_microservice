@@ -19,6 +19,8 @@ gem 'dry-initializer', '~> 3.0.3'
 gem 'faraday'
 gem 'faraday_middleware'
 
+gem 'bunny', '>= 2.14.1'
+
 group :development do
   gem 'byebug'
 end

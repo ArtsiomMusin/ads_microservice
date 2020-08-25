@@ -1,7 +1,6 @@
 require 'sinatra/url_for'
 
 class Application < Sinatra::Base
-  #helpers Validations
   helpers Sinatra::UrlForHelper
 
   configure do

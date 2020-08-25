@@ -16,14 +16,8 @@ class CreateService
 
   def call
     @ad = ::Ad.new(@ad.to_h)
-    find_city_coord
     return fail!(@ad.errors) unless @ad.save
-  end
 
-  private
-
-  def find_city_coord
-    coordinates = @geo_client.coord(@ad.city)
-    @ad.lat, @ad.lon = coordinates if coordinates
+    @geo_client.geocode_later(@ad)
   end
 end
