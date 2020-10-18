@@ -1,0 +1,5 @@
+app:
+  name: ads
+logger:
+  path: log/app.log
+  level: info

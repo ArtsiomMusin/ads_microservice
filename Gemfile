@@ -8,6 +8,7 @@ gem 'pg'
 
 gem 'rake'
 gem 'puma'
+gem 'config'
 
 gem 'i18n'
 gem 'fast_jsonapi', '~> 1.5'
@@ -20,6 +21,10 @@ gem 'faraday'
 gem 'faraday_middleware'
 
 gem 'bunny', '>= 2.14.1'
+
+gem 'rack-ougai'
+gem 'amazing_print'
+gem 'rack-request-id'
 
 group :development do
   gem 'byebug'
