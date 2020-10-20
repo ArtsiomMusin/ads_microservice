@@ -3,3 +3,7 @@ app:
 logger:
   path: log/app.log
   level: info
+rabbitmq:
+  host: <%= ENV['RABBITMQ_HOST']%>
+  user: <%= ENV['RABBITMQ_USER']%>
+  password: <%= ENV['RABBITMQ_PASS']%>

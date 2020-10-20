@@ -1,0 +1,7 @@
+[app]
+misty-sun-vs.icdc.io
+
+[all:vars]
+
+ansible_user=admin
+ansible_python_interpreter=/usr/bin/python3

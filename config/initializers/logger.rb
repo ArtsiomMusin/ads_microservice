@@ -1,6 +1,6 @@
 Application.configure do |app|
   logger = Ougai::Logger.new(
-    app.root.concat('/', Settings.logger.path),
+    app.root.concat('/', ::Settings.logger.path),
     level: Settings.logger.level
   )
 
@@ -12,7 +12,7 @@ Application.configure do |app|
   app.set :logger, logger
 end
 
-Application.configure :development do |app|
+Application.configure :development, :production do |app|
   logger = Ougai::Logger.new(STDOUT)
   logger.formatter = Ougai::Formatters::Readable.new
 
