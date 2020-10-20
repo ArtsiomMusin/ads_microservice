@@ -1,7 +1,9 @@
+require_relative 'api'
+
 module GeoService
   class Client
     extend Dry::Initializer[undefined: false]
-    include Api
+    include GeoService::Api
 
     option :queue, default: proc { create_queue }
 
